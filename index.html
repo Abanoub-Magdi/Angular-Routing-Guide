@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angular Router Mastery Guide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">NG</div>
+      <div>
+        <div class="title">Angular Router Mastery Guide</div>
+        <div class="subtitle">Built for juniors → experts</div>
+      </div>
+    </div>
+    <div class="actions">
+      <input id="searchInput" type="search" placeholder="Search topics, guards, params..." aria-label="Search guide">
+      <button id="highlightBtn" class="ghost">Highlight Best Practices</button>
+      <select id="pathSelect" class="ghost" aria-label="Learning path">
+        <option value="all">All Levels</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+      <button id="themeToggle" class="ghost">Light/Dark</button>
+      <button id="printSelectedBtn" class="ghost">Print Selected</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar" aria-label="Table of contents">
+      <div class="sidebar-title">Quick Nav</div>
+      <ul id="toc">
+        <li><a href="#decision-tree">Quick Decision Tree</a></li>
+        <li><a href="#learning-path">Learning Path</a></li>
+        <li><a href="#scenarios">Real Scenarios</a></li>
+        <li><a href="#performance-checklist">Performance Checklist</a></li>
+        <li><a href="#architecture-patterns">Architecture Patterns</a></li>
+        <li><a href="#core-architecture">Core Architecture</a></li>
+        <li><a href="#route-config">Route Configuration</a></li>
+        <li><a href="#data-state">Data Handling & State</a></li>
+        <li><a href="#navigation">Navigation Techniques</a></li>
+        <li><a href="#guards">Security & Logic (Guards)</a></li>
+        <li><a href="#resolvers">Data Pre-fetching (Resolvers)</a></li>
+        <li><a href="#performance-events">Advanced Performance & Events</a></li>
+        <li><a href="#outlets">Router Outlets</a></li>
+        <li><a href="#routerlink">RouterLink Essentials</a></li>
+        <li><a href="#patterns">Practical Patterns & Edge Cases</a></li>
+        <li><a href="#cheat-tables">Cheat Tables</a></li>
+        <li><a href="#skeleton">Minimal Modern Skeleton</a></li>
+        <li><a href="#best-practices">Team Best Practices</a></li>
+      </ul>
+      <div class="sidebar-title">Bookmarks</div>
+      <ul id="bookmarkList" class="bookmark-list"></ul>
+    </nav>
+
+    <main class="content">
+      <section class="hero">
+        <div>
+          <h1>Angular Router: Complete, Team-Ready Playbook</h1>
+          <p>Friendly, memorable guidance for every skill level. Use decision trees, checklists, and annotated steps to ship routing with confidence.</p>
+          <div class="labels">
+            <span class="pill">Angular @angular/router</span>
+            <span class="pill">Standalone-ready</span>
+            <span class="pill">Lazy loading</span>
+            <span class="pill">Guards & resolvers</span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div>Progress</div>
+          <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+          <div id="progressText" class="progress-text">0% complete</div>
+          <small>Check off each section as you study. Saved locally.</small>
+        </div>
+      </section>
+
+      <!-- Quick Decision Tree -->
+      <article id="decision-tree" class="card section" data-level="beginner">
+        <header class="section-header">
+          <div>
+            <h2>🎯 Quick Decision Tree</h2>
+            <p>Pick the right routing tool fast.</p>
+          </div>
+          <div class="section-controls">
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="decision-tree"><span>Done</span></label>
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="flow-grid">
+            <div class="flow-box info-box">
+              <div class="badge">Start</div>
+              <p>I need a simple page → use basic route with component.</p>
+            </div>
+            <div class="flow-box best-box">
+              <div class="badge">Lazy?</div>
+              <p>Feature large/rare? → use <code>loadChildren</code>. Else keep eager.</p>
+            </div>
+            <div class="flow-box arch-box">
+              <div class="badge">Guard?</div>
+              <p>Needs auth/role? → <code>CanActivate</code>/<code>CanMatch</code>. Protect children? → <code>CanActivateChild</code>. Unsaved? → <code>CanDeactivate</code>.</p>
+            </div>
+            <div class="flow-box info-box">
+              <div class="badge">Data?</div>
+              <p>Must have before render? → Resolver. Optional? → fetch in component.</p>
+            </div>
+            <div class="flow-box caution-box">
+              <div class="badge">Reuse?</div>
+              <p>Need cache? → Custom RouteReuseStrategy (sparingly).</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Learning Path -->
+      <article id="learning-path" class="card section" data-level="beginner">
+        <header class="section-header">
+          <div>
+            <h2>📚 Learning Path</h2>
+            <p>Follow this order to master routing.</p>
+          </div>
+          <div class="section-controls">
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="learning-path"><span>Done</span></label>
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="path-grid">
+            <div class="path-card" data-level="beginner">
+              <div class="badge">Beginner</div>
+              <ul>
+                <li>Core Architecture</li>
+                <li>Route Configuration</li>
+                <li>Data Handling</li>
+                <li>Navigation Techniques</li>
+              </ul>
+            </div>
+            <div class="path-card" data-level="intermediate">
+              <div class="badge">Intermediate</div>
+              <ul>
+                <li>Guards</li>
+                <li>Resolvers</li>
+                <li>Router Outlets</li>
+                <li>RouterLink Essentials</li>
+              </ul>
+            </div>
+            <div class="path-card" data-level="advanced">
+              <div class="badge">Advanced</div>
+              <ul>
+                <li>Performance & Events</li>
+                <li>Patterns & Edge Cases</li>
+                <li>Architecture Patterns</li>
+                <li>Reuse Strategy (cautious)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Real Scenarios -->
+      <article id="scenarios" class="card section" data-level="intermediate">
+        <header class="section-header">
+          <div>
+            <h2>🔥 Real Project Scenarios</h2>
+            <p>Apply routing in common apps.</p>
+          </div>
+          <div class="section-controls">
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="scenarios"><span>Done</span></label>
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="scenario-grid">
+            <div class="scenario-card info-box">
+              <h3>E-commerce</h3>
+              <ul>
+                <li>Lazy load product, cart, checkout features.</li>
+                <li>Guard checkout with auth (CanActivate + CanMatch).</li>
+                <li>Resolvers for product detail to avoid flicker.</li>
+              </ul>
+            </div>
+            <div class="scenario-card best-box">
+              <h3>Admin Dashboard</h3>
+              <ul>
+                <li>Role-based CanMatch to block bundle download for non-admins.</li>
+                <li>Child guards for subsections.</li>
+                <li>Preload frequently used admin modules.</li>
+              </ul>
+            </div>
+            <div class="scenario-card arch-box">
+              <h3>Multi-tenant</h3>
+              <ul>
+                <li>Tenant in path (/t/:tenantId/...)</li>
+                <li>Resolvers to load tenant settings.</li>
+                <li>Route data for feature flags.</li>
+              </ul>
+            </div>
+            <div class="scenario-card caution-box">
+              <h3>Mobile SPA</h3>
+              <ul>
+                <li>Prefer lazy + selective preload.</li>
+                <li>Use scroll restoration + fragments.</li>
+                <li>Avoid heavy guards; keep them fast.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Performance Checklist -->
+      <article id="performance-checklist" class="card section" data-level="advanced">
+        <header class="section-header">
+          <div>
+            <h2>⚡ Performance Checklist</h2>
+            <p>Pre-launch essentials.</p>
+          </div>
+          <div class="section-controls">
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="performance-checklist"><span>Done</span></label>
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body checklist">
+          <label><input type="checkbox"> Use lazy loading for big/rare features.</label>
+          <label><input type="checkbox"> Add selective preloading for hot paths.</label>
+          <label><input type="checkbox"> Keep guards/resolvers fast; no heavy global work.</label>
+          <label><input type="checkbox"> Enable scrollPositionRestoration + anchorScrolling.</label>
+          <label><input type="checkbox"> Handle NavigationError to avoid blank screens.</label>
+          <label><input type="checkbox"> Measure with Router.events and browser Performance tab.</label>
+        </div>
+      </article>
+
+      <!-- Architecture Patterns -->
+      <article id="architecture-patterns" class="card section" data-level="advanced">
+        <header class="section-header">
+          <div>
+            <h2>🎨 Architecture Patterns</h2>
+            <p>Scalable structures for teams.</p>
+          </div>
+          <div class="section-controls">
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="architecture-patterns"><span>Done</span></label>
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="callouts">
+            <div class="callout arch-box">
+              <h4>Feature-first</h4>
+              <p>Group routes by feature folders with their own routes files; lazy load each.</p>
+            </div>
+            <div class="callout arch-box">
+              <h4>Core vs Shared</h4>
+              <p>Core for singletons (auth, layout); Shared for UI components; keep routes feature-owned.</p>
+            </div>
+            <div class="callout arch-box">
+              <h4>Micro-frontends</h4>
+              <p>Use module federation; isolate routes per remote; coordinate with guards at shell.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Core sections -->
+      <div id="sections-anchor"></div>
+
+      <!-- Template functionally repeated for each of the 13 main topics -->
+      <!-- To keep concise, we apply the same structured blocks -->
+
+      <!-- 1 Core Architecture -->
+      <article id="core-architecture" class="card section" data-title="Core Architecture" data-level="beginner">
+        <header class="section-header">
+          <div><h2>1) Core Architecture</h2><p>Routes, outlets, router links.</p></div>
+          <div class="section-controls">
+            <button class="bookmark" aria-label="Bookmark">☆</button>
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="core-architecture"><span>Done</span></label>
+            <input type="checkbox" class="print-check" aria-label="Print this section">
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box">
+              <h4>🎯 What</h4>
+              <p>Routes map URLs to components; RouterOutlet renders them; RouterLink navigates.</p>
+            </div>
+            <div class="best-box">
+              <h4>✅ When to use</h4>
+              <ul class="bp-list">
+                <li>Any view navigation</li>
+                <li>Primary outlet for main flow</li>
+                <li>Named outlets for side panels/modals</li>
+              </ul>
+            </div>
+            <div class="caution-box">
+              <h4>❌ When not</h4>
+              <ul>
+                <li>One-screen apps (skip complex routing)</li>
+                <li>Heavy multipane reuse (consider stateful components)</li>
+              </ul>
+            </div>
+            <div class="arch-box">
+              <h4>🏗️ Architecture</h4>
+              <p>Keep a single primary outlet; name outlets for secondary UI; document URL shapes.</p>
+            </div>
+          </div>
+          <div class="steps-box">
+            <h4>📋 Steps</h4>
+            <ol>
+              <li>Define routes array (path -> component).</li>
+              <li>Add <code>&lt;router-outlet&gt;</code> to layout.</li>
+              <li>Use <code>[routerLink]</code> for navigation.</li>
+            </ol>
+          </div>
+          <div class="code-block" data-lang="ts">
+            <button class="copy-btn">Copy</button>
+            <pre><code>export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+];</code></pre>
+          </div>
+          <div class="mistakes warn-box">
+            <h4>⚠️ Common mistakes</h4>
+            <ul>
+              <li>Missing <code>pathMatch:'full'</code> on empty redirects.</li>
+              <li>Using strings in routerLink instead of arrays (encoding issues).</li>
+            </ul>
+          </div>
+          <div class="summary">
+            <h4>📌 Summary</h4>
+            <ul>
+              <li>Routes = map; Outlet = placeholder; Link = navigation.</li>
+              <li>Prefer array routerLink; add pathMatch on redirects.</li>
+            </ul>
+          </div>
+          <div class="notes-box">
+            <textarea data-notes-for="core-architecture" placeholder="Your notes..."></textarea>
+            <button class="save-note" data-notes-for="core-architecture">Save note</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 Route Configuration -->
+      <article id="route-config" class="card section" data-title="Route Configuration" data-level="beginner">
+        <header class="section-header">
+          <div><h2>2) Route Configuration</h2><p>Basics, ordering, lazy loading.</p></div>
+          <div class="section-controls">
+            <button class="bookmark" aria-label="Bookmark">☆</button>
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="route-config"><span>Done</span></label>
+            <input type="checkbox" class="print-check" aria-label="Print this section">
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Routes are matched in order; support redirects, wildcards, lazy modules.</p></div>
+            <div class="best-box"><h4>✅ When to use</h4><ul class="bp-list"><li>Every app needs base routes</li><li>Lazy for big/rare features</li></ul></div>
+            <div class="caution-box"><h4>❌ When not</h4><ul><li>Do not overuse wildcards; keep it last</li><li>Avoid giant root routes file—split per feature</li></ul></div>
+            <div class="arch-box"><h4>🏗️ Architecture</h4><p>Feature-first route files; keep root slim.</p></div>
+          </div>
+          <div class="steps-box">
+            <h4>📋 Steps</h4>
+            <ol>
+              <li>Order: specific → param → wildcard (** last).</li>
+              <li>Add index: <code>{ path:'', pathMatch:'full', redirectTo:'home' }</code>.</li>
+              <li>Lazy load features with <code>loadChildren</code>.</li>
+            </ol>
+          </div>
+          <div class="code-block" data-lang="ts">
+            <button class="copy-btn">Copy</button>
+            <pre><code>{ path: '', pathMatch: 'full', redirectTo: 'home' },
+{ path: 'home', component: HomeComponent },
+{ path: 'admin', loadChildren: () => import('./admin/admin.routes').then(m => m.ADMIN_ROUTES) },
+{ path: '**', component: NotFoundComponent };</code></pre>
+          </div>
+          <div class="mistakes warn-box">
+            <h4>⚠️ Common mistakes</h4>
+            <ul>
+              <li>Wildcard not last → unexpected 404s.</li>
+              <li>Missing pathMatch on redirects.</li>
+            </ul>
+          </div>
+          <div class="summary">
+            <h4>📌 Summary</h4>
+            <ul>
+              <li>Order matters; wildcard last.</li>
+              <li>Lazy load big features.</li>
+            </ul>
+          </div>
+          <div class="notes-box">
+            <textarea data-notes-for="route-config" placeholder="Your notes..."></textarea>
+            <button class="save-note" data-notes-for="route-config">Save note</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 Data Handling & State -->
+      <article id="data-state" class="card section" data-title="Data Handling & State" data-level="beginner">
+        <header class="section-header">
+          <div><h2>3) Data Handling & State</h2><p>Params, query params, static data.</p></div>
+          <div class="section-controls">
+            <button class="bookmark" aria-label="Bookmark">☆</button>
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="data-state"><span>Done</span></label>
+            <input type="checkbox" class="print-check" aria-label="Print this section">
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Route params and query params supply dynamic data; static data provides metadata.</p></div>
+            <div class="best-box"><h4>✅ When to use</h4><ul class="bp-list"><li>Params for resource IDs</li><li>Query params for filters/sort</li><li>Data for titles/roles</li></ul></div>
+            <div class="caution-box"><h4>❌ When not</h4><ul><li>Don’t overload params; keep URLs meaningful</li></ul></div>
+            <div class="arch-box"><h4>🏗️ Architecture</h4><p>Use Observables (paramMap/queryParamMap) when component persists.</p></div>
+          </div>
+          <div class="steps-box">
+            <h4>📋 Steps</h4>
+            <ol>
+              <li>Read params via <code>paramMap</code> (subscribe).</li>
+              <li>Read query via <code>queryParamMap</code>.</li>
+              <li>Use snapshot only if component recreates.</li>
+            </ol>
+          </div>
+          <div class="code-block" data-lang="ts">
+            <button class="copy-btn">Copy</button>
+            <pre><code>this.route.paramMap.subscribe(p => this.id = p.get('id'));
+this.route.queryParamMap.subscribe(q => this.sort = q.get('sort'));</code></pre>
+          </div>
+          <div class="mistakes warn-box">
+            <h4>⚠️ Common mistakes</h4>
+            <ul><li>Using snapshot when component stays alive → stale data.</li></ul>
+          </div>
+          <div class="summary">
+            <h4>📌 Summary</h4>
+            <ul><li>Subscribe for live changes; snapshot for one-time.</li></ul>
+          </div>
+          <div class="notes-box">
+            <textarea data-notes-for="data-state" placeholder="Your notes..."></textarea>
+            <button class="save-note" data-notes-for="data-state">Save note</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 Navigation -->
+      <article id="navigation" class="card section" data-title="Navigation Techniques" data-level="beginner">
+        <header class="section-header">
+          <div><h2>4) Navigation Techniques</h2><p>Declarative & programmatic.</p></div>
+          <div class="section-controls">
+            <button class="bookmark" aria-label="Bookmark">☆</button>
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="navigation"><span>Done</span></label>
+            <input type="checkbox" class="print-check" aria-label="Print this section">
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Move users via routerLink or Router.navigate.</p></div>
+            <div class="best-box"><h4>✅ When to use</h4><ul class="bp-list"><li>routerLink for templates</li><li>navigate for logic-based flows</li></ul></div>
+            <div class="caution-box"><h4>❌ When not</h4><ul><li>Avoid string concatenation; use arrays</li></ul></div>
+            <div class="arch-box"><h4>🏗️ Architecture</h4><p>Keep navigation helpers in services for reuse.</p></div>
+          </div>
+          <div class="steps-box"><h4>📋 Steps</h4><ol><li>Use array syntax for paths.</li><li>Add query/fragment via extras.</li><li>Use relativeTo for child/sibling routes.</li></ol></div>
+          <div class="code-grid">
+            <div class="code-block" data-lang="html"><button class="copy-btn">Copy</button><pre><code>&lt;a [routerLink]="['/users', id]" [queryParams]="{ sort: 'name' }"&gt;View&lt;/a&gt;</code></pre></div>
+            <div class="code-block" data-lang="ts"><button class="copy-btn">Copy</button><pre><code>this.router.navigate(['../', 'profile'], { relativeTo: this.route });</code></pre></div>
+          </div>
+          <div class="mistakes warn-box"><h4>⚠️ Common mistakes</h4><ul><li>Using strings instead of arrays → broken encoding.</li></ul></div>
+          <div class="summary"><h4>📌 Summary</h4><ul><li>routerLink for templates; navigate for code.</li></ul></div>
+          <div class="notes-box"><textarea data-notes-for="navigation" placeholder="Your notes..."></textarea><button class="save-note" data-notes-for="navigation">Save note</button></div>
+        </div>
+      </article>
+
+      <!-- Remaining sections follow same enhanced pattern but with concise content -->
+      <!-- For brevity, the core info is condensed while keeping key guidance -->
+
+      <article id="guards" class="card section" data-title="Route Guards" data-level="intermediate">
+        <header class="section-header">
+          <div><h2>5) Security & Logic: Guards</h2><p>Protect and control navigation.</p></div>
+          <div class="section-controls">
+            <button class="bookmark" aria-label="Bookmark">☆</button>
+            <label class="checkbox"><input type="checkbox" class="section-check" data-section="guards"><span>Done</span></label>
+            <input type="checkbox" class="print-check" aria-label="Print this section">
+            <button class="toggle" aria-label="Toggle section">▼</button>
+          </div>
+        </header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Functions that allow, block, or redirect navigation.</p></div>
+            <div class="best-box"><h4>✅ When to use</h4><ul class="bp-list"><li>Auth/roles (CanActivate/CanMatch)</li><li>Protect children (CanActivateChild)</li><li>Unsaved data (CanDeactivate)</li></ul></div>
+            <div class="caution-box"><h4>❌ When not</h4><ul><li>Avoid heavy API calls in guards</li><li>Don’t navigate inside guards—return UrlTree</li></ul></div>
+            <div class="arch-box"><h4>🏗️ Architecture</h4><p>Centralize auth guard; share helpers for role checks.</p></div>
+          </div>
+          <div class="steps-box"><h4>📋 Steps</h4><ol><li>Create functional guard with inject().</li><li>Return boolean/UrlTree/Observable/Promise.</li><li>Attach to routes via canActivate/canMatch/etc.</li></ol></div>
+          <div class="code-block" data-lang="ts"><button class="copy-btn">Copy</button><pre><code>export const authGuard: CanActivateFn = () => {
+  const auth = inject(AuthService);
+  return auth.isLoggedIn()
+    ? true
+    : inject(Router).createUrlTree(['/login']);
+};</code></pre></div>
+          <div class="mistakes warn-box"><h4>⚠️ Common mistakes</h4><ul><li>Calling navigate inside guard → loops.</li><li>Slow guards → sluggish UX.</li></ul></div>
+          <div class="summary"><h4>📌 Summary</h4><ul><li>Use UrlTree for redirects; keep guards light.</li></ul></div>
+          <div class="notes-box"><textarea data-notes-for="guards" placeholder="Your notes..."></textarea><button class="save-note" data-notes-for="guards">Save note</button></div>
+        </div>
+      </article>
+
+      <article id="resolvers" class="card section" data-title="Resolvers" data-level="intermediate">
+        <header class="section-header"><div><h2>6) Data Pre-fetching: Resolvers</h2><p>Load data before view.</p></div><div class="section-controls"><button class="bookmark" aria-label="Bookmark">☆</button><label class="checkbox"><input type="checkbox" class="section-check" data-section="resolvers"><span>Done</span></label><input type="checkbox" class="print-check" aria-label="Print this section"><button class="toggle" aria-label="Toggle section">▼</button></div></header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Preload critical data; navigation waits.</p></div>
+            <div class="best-box"><h4>✅ When</h4><ul class="bp-list"><li>Must-have data to render</li><li>SEO/SSR scenarios</li></ul></div>
+            <div class="caution-box"><h4>❌ When not</h4><ul><li>Optional data → fetch in component</li></ul></div>
+            <div class="arch-box"><h4>🏗️ Architecture</h4><p>Keep resolvers fast; handle errors.</p></div>
+          </div>
+          <div class="steps-box"><h4>📋 Steps</h4><ol><li>Create ResolveFn returning Observable.</li><li>Attach via resolve: { key }.</li><li>Read via route.data.</li></ol></div>
+          <div class="code-block" data-lang="ts"><button class="copy-btn">Copy</button><pre><code>export const userResolver: ResolveFn<User> = (route) =>
+  inject(UserApi).getUser(route.paramMap.get('id')!);</code></pre></div>
+          <div class="mistakes warn-box"><h4>⚠️ Common mistakes</h4><ul><li>No error handling → stuck nav. Use catchError.</li></ul></div>
+          <div class="summary"><h4>📌 Summary</h4><ul><li>Use for critical data; keep quick.</li></ul></div>
+          <div class="notes-box"><textarea data-notes-for="resolvers" placeholder="Your notes..."></textarea><button class="save-note" data-notes-for="resolvers">Save note</button></div>
+        </div>
+      </article>
+
+      <article id="performance-events" class="card section" data-title="Advanced Performance & Events" data-level="advanced">
+        <header class="section-header"><div><h2>7) Advanced Performance & Events</h2><p>Preloading, events, reuse.</p></div><div class="section-controls"><button class="bookmark" aria-label="Bookmark">☆</button><label class="checkbox"><input type="checkbox" class="section-check" data-section="performance-events"><span>Done</span></label><input type="checkbox" class="print-check" aria-label="Print this section"><button class="toggle" aria-label="Toggle section">▼</button></div></header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Observe navigation events; optimize loading.</p></div>
+            <div class="best-box"><h4>✅ When</h4><ul class="bp-list"><li>Show spinners on NavigationStart/End</li><li>Preload after boot</li></ul></div>
+            <div class="caution-box"><h4>❌ When not</h4><ul><li>Don’t preload huge rarely-used modules on slow networks</li></ul></div>
+            <div class="arch-box"><h4>🏗️ Architecture</h4><p>Custom PreloadingStrategy keyed by route.data.preload.</p></div>
+          </div>
+          <div class="steps-box"><h4>📋 Steps</h4><ol><li>Subscribe to router.events.</li><li>Add withPreloading(PreloadAllModules) or custom.</li><li>Use reuse strategy only if necessary.</li></ol></div>
+          <div class="code-block" data-lang="ts"><button class="copy-btn">Copy</button><pre><code>provideRouter(routes, withPreloading(PreloadAllModules));</code></pre></div>
+          <div class="mistakes warn-box"><h4>⚠️ Common mistakes</h4><ul><li>Over-preloading on poor networks.</li><li>Leaky reuse caches.</li></ul></div>
+          <div class="summary"><h4>📌 Summary</h4><ul><li>Measure with events; preload smartly.</li></ul></div>
+          <div class="notes-box"><textarea data-notes-for="performance-events" placeholder="Your notes..."></textarea><button class="save-note" data-notes-for="performance-events">Save note</button></div>
+        </div>
+      </article>
+
+      <article id="outlets" class="card section" data-title="Router Outlets" data-level="intermediate">
+        <header class="section-header"><div><h2>8) Router Outlets (Primary & Named)</h2><p>Multiple outlets.</p></div><div class="section-controls"><button class="bookmark" aria-label="Bookmark">☆</button><label class="checkbox"><input type="checkbox" class="section-check" data-section="outlets"><span>Done</span></label><input type="checkbox" class="print-check" aria-label="Print this section"><button class="toggle" aria-label="Toggle section">▼</button></div></header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Primary outlet plus named outlets for side content.</p></div>
+            <div class="best-box"><h4>✅ When</h4><ul class="bp-list"><li>Sidebars, modals, chat panels</li></ul></div>
+            <div class="caution-box"><h4>❌ When not</h4><ul><li>Avoid for simple flows; keep URLs shareable</li></ul></div>
+          </div>
+          <div class="steps-box"><h4>📋 Steps</h4><ol><li>Add named <code>router-outlet</code>.</li><li>Navigate with outlets object.</li><li>Close by setting outlet to null.</li></ol></div>
+          <div class="code-grid">
+            <div class="code-block" data-lang="html"><button class="copy-btn">Copy</button><pre><code>&lt;router-outlet&gt;&lt;/router-outlet&gt;
+&lt;router-outlet name="sidebar"&gt;&lt;/router-outlet&gt;</code></pre></div>
+            <div class="code-block" data-lang="ts"><button class="copy-btn">Copy</button><pre><code>this.router.navigate([{ outlets: { sidebar: ['notes'] } }]);
+this.router.navigate([{ outlets: { sidebar: null } }]);</code></pre></div>
+          </div>
+          <div class="summary"><h4>📌 Summary</h4><ul><li>Named outlets = parallel UI; remember URL shape.</li></ul></div>
+        </div>
+      </article>
+
+      <article id="routerlink" class="card section" data-title="RouterLink Essentials" data-level="beginner">
+        <header class="section-header"><div><h2>9) RouterLink Essentials</h2><p>Active states and options.</p></div><div class="section-controls"><button class="bookmark" aria-label="Bookmark">☆</button><label class="checkbox"><input type="checkbox" class="section-check" data-section="routerlink"><span>Done</span></label><input type="checkbox" class="print-check" aria-label="Print this section"><button class="toggle" aria-label="Toggle section">▼</button></div></header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Declarative navigation links.</p></div>
+            <div class="best-box"><h4>✅ When</h4><ul class="bp-list"><li>Template links, nav bars</li><li>Need active styling</li></ul></div>
+          </div>
+          <div class="code-block" data-lang="html"><button class="copy-btn">Copy</button><pre><code>&lt;a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }"&gt;Home&lt;/a&gt;</code></pre></div>
+          <div class="mistakes warn-box"><ul><li>Forgetting exact on root links.</li><li>Not using array syntax.</li></ul></div>
+          <div class="summary"><h4>📌 Summary</h4><ul><li>Use array syntax; exact for root.</li></ul></div>
+        </div>
+      </article>
+
+      <article id="patterns" class="card section" data-title="Practical Patterns & Edge Cases" data-level="advanced">
+        <header class="section-header"><div><h2>10) Practical Patterns & Edge Cases</h2><p>Deep cuts.</p></div><div class="section-controls"><button class="bookmark" aria-label="Bookmark">☆</button><label class="checkbox"><input type="checkbox" class="section-check" data-section="patterns"><span>Done</span></label><input type="checkbox" class="print-check" aria-label="Print this section"><button class="toggle" aria-label="Toggle section">▼</button></div></header>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-box"><h4>🎯 What</h4><p>Handling param reuse, loops, fragments, secondary URLs.</p></div>
+            <div class="best-box"><h4>✅ Best practices</h4><ul class="bp-list"><li>Subscribe to paramMap on reused components</li><li>Return UrlTree in guards</li><li>Enable anchor scrolling</li></ul></div>
+          </div>
+          <div class="mistakes warn-box"><ul><li>Navigation loops when calling navigate in guards.</li><li>Unshareable URLs with named outlets not documented.</li></ul></div>
+          <div class="summary"><h4>📌 Summary</h4><ul><li>Be explicit with params, fragments, and reuse.</li></ul></div>
+        </div>
+      </article>
+
+      <article id="cheat-tables" class="card section" data-title="Cheat Tables" data-level="beginner">
+        <header class="section-header"><div><h2>11) Cheat Tables</h2><p>Quick reference.</p></div><div class="section-controls"><button class="bookmark" aria-label="Bookmark">☆</button><label class="checkbox"><input type="checkbox" class="section-check" data-section="cheat-tables"><span>Done</span></label><input type="checkbox" class="print-check" aria-label="Print this section"><button class="toggle" aria-label="Toggle section">▼</button></div></header>
+        <div class="section-body">
+          <div class="table-wrap two-col">
+            <table>
+              <thead><tr><th>Route Property</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td>path</td><td>URL segment</td></tr>
+                <tr><td>component / loadComponent</td><td>Render target</td></tr>
+                <tr><td>loadChildren</td><td>Lazy feature routes</td></tr>
+                <tr><td>children</td><td>Nested routes</td></tr>
+                <tr><td>redirectTo</td><td>Redirect target</td></tr>
+                <tr><td>pathMatch</td><td>'full' vs 'prefix'</td></tr>
+                <tr><td>data</td><td>Static metadata</td></tr>
+                <tr><td>guards</td><td>canActivate/canMatch/etc.</td></tr>
+                <tr><td>resolve</td><td>Pre-fetch data</td></tr>
+                <tr><td>outlet</td><td>Named outlet target</td></tr>
+              </tbody>
+            </table>
+            <table>
+              <thead><tr><th>Navigation Option</th><th>Use</th></tr></thead>
+              <tbody>
+                <tr><td>queryParams</td><td>Set query params</td></tr>
+                <tr><td>queryParamsHandling</td><td>merge/preserve</td></tr>
+                <tr><td>fragment</td><td>Anchor target</td></tr>
+                <tr><td>relativeTo</td><td>Base for relative nav</td></tr>
+                <tr><td>replaceUrl</td><td>Replace history entry</td></tr>
+                <tr><td>state</td><td>History state payload</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article id="skeleton" class="card section" data-title="Minimal Skeleton" data-level="intermediate">
+        <header class="section-header"><div><h2>12) Minimal, Modern Skeleton (standalone)</h2><p>Ready-to-copy.</p></div><div class="section-controls"><button class="bookmark" aria-label="Bookmark">☆</button><label class="checkbox"><input type="checkbox" class="section-check" data-section="skeleton"><span>Done</span></label><input type="checkbox" class="print-check" aria-label="Print this section"><button class="toggle" aria-label="Toggle section">▼</button></div></header>
+        <div class="section-body">
+          <div class="code-grid">
+            <div class="code-block" data-lang="ts"><button class="copy-btn">Copy</button><pre><code>bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes, withPreloading(PreloadAllModules))]
+});</code></pre></div>
+            <div class="code-block" data-lang="ts"><button class="copy-btn">Copy</button><pre><code>export const routes: Routes = [
+  { path: '', loadComponent: () => import('./home/home.component') },
+  { path: 'users/:id', loadComponent: () => import('./users/detail.component'),
+    resolve: { user: userResolver }, canDeactivate: [editLeaveGuard] },
+  { path: '**', loadComponent: () => import('./not-found/not-found.component') }
+];</code></pre></div>
+          </div>
+        </div>
+      </article>
+
+      <article id="best-practices" class="card section" data-title="Team Best Practices" data-level="intermediate">
+        <header class="section-header"><div><h2>13) Team Best Practices</h2><p>Concise checklist.</p></div><div class="section-controls"><button class="bookmark" aria-label="Bookmark">☆</button><label class="checkbox"><input type="checkbox" class="section-check" data-section="best-practices"><span>Done</span></label><input type="checkbox" class="print-check" aria-label="Print this section"><button class="toggle" aria-label="Toggle section">▼</button></div></header>
+        <div class="section-body">
+          <ul class="bullets bp-list">
+            <li>Lazy load features; selectively preload.</li>
+            <li>Return UrlTree in guards/resolvers for clean redirects.</li>
+            <li>Subscribe to paramMap/queryParamMap for reused components.</li>
+            <li>Keep resolvers fast; catch errors.</li>
+            <li>Centralize auth/role guard logic.</li>
+            <li>Enable scroll restoration + anchor scrolling.</li>
+            <li>Document named outlets for shareable URLs.</li>
+            <li>Profile slow navigations with Router.events.</li>
+          </ul>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div>Angular Router Mastery · Built for team onboarding and deep dives.</div>
+    <div class="footer-links">
+      <span>Collapsible · Copy snippets · Search · Progress · Print-friendly</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
