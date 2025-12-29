@@ -6,6 +6,8 @@ A comprehensive, beautifully designed interactive study guide for mastering Angu
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![Project Preview](assets/project_preview.png)
+
 ## ✨ Features
 
 ### 📚 Comprehensive Content
